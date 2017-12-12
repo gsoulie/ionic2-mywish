@@ -1,0 +1,62 @@
+<ion-header>
+  <ion-navbar color="maintheme">
+    <ion-title>{{title}}</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only color="white" (click)="onRefresh()">
+        <ion-icon name="refresh"></ion-icon>
+      </button>
+      <button ion-button icon-only color="white" (click)="onDisconnect()">
+          <ion-icon name="md-exit" color="white"></ion-icon>
+        </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+<ion-content class="window">
+<ion-fab right bottom>
+    <button ion-fab color="maintheme" (click)="onAddGame()">
+      <ion-icon name="add" [style.color] = "'#ffffff'"></ion-icon>
+    </button>
+  </ion-fab>
+  <ion-item class="itemTransparency" no-lines>
+    <ion-label class="lbl">{{gameCount}} jeu(x)</ion-label>
+  </ion-item>
+  <div *ngIf="games">
+    <ion-card *ngFor="let game of games | async ; let idx=index">
+      <ion-card-header class="cardHeader" no-padding>
+        <ion-item class="leftPadding" no-lines no-padding>
+            <p class="title"><b>
+              {{game.title}} - {{game.listType}}
+            </b></p>
+            <div item-right>
+              <button class="actionBtn" ion-button icon-only clear (click)="onEdit(game)">
+                  <ion-icon class="actionIcon" name="create" [style.color]="'#999999'" icon-center></ion-icon>
+              </button>
+            <button class="actionBtn" ion-button icon-only clear (click)="onDelete(game)">
+                <ion-icon  class="actionIcon" name="trash" [style.color]="'#999999'" icon-center></ion-icon>
+            </button>
+          </div>
+        </ion-item>
+       
+      </ion-card-header>
+  
+      <ion-card-content no-padding class="leftPadding">
+        <ion-badge *ngFor="let cat of game.category" class="badgeClass" [style.backgroundColor]="cat.color">
+          {{cat.libelle}}
+        </ion-badge>
+        <div class="separator"></div>
+        <button ion-button clear small color="textgrey" icon-left [style.padding-left]="'7px'">
+          <ion-icon name="people" [style.color]="'#999999'" icon-left class="icon"></ion-icon>
+          {{game.player}}
+        </button>
+        <button ion-button clear small color="textgrey" icon-left>
+          <ion-icon name="time" [style.color]="'#999999'" icon-left class="icon"></ion-icon>
+          {{game.duration}}
+        </button>
+        <button ion-button clear small color="textgrey" icon-left>
+          <ion-icon name="logo-euro" [style.color]="'#999999'" icon-left class="icon"></ion-icon>
+          {{game.price}}
+        </button>
+      </ion-card-content>
+    </ion-card>
+  </div>
+</ion-content>

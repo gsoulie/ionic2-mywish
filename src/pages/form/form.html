@@ -1,0 +1,61 @@
+<ion-header>
+  <ion-navbar color="maintheme">
+    <ion-title>{{title}}</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only type="submit" (click)="onSave()">
+        <ion-icon name="checkmark"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+    <form [formGroup]="gameForm" (ngSubmit)="onSave()">
+        <ion-item>
+            <ion-label stacked>Titre</ion-label>
+            <ion-input type="text" formControlName="title" required></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label stacked>Commentaire</ion-label>
+            <ion-input type="text" formControlName="comment"></ion-input>
+        </ion-item>
+      
+       <ion-item>
+          <ion-label stacked>Nombre de joueur</ion-label>
+          <ion-select formControlName="player">
+              <ion-option *ngFor="let nb of nbJoueur" value="{{nb}}">
+                  {{nb}}</ion-option>
+          </ion-select>
+        </ion-item>
+        <ion-item>
+            <ion-label stacked>Durée (en minutes)</ion-label>
+            <ion-input type="number" formControlName="duration"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label stacked>Prix</ion-label>
+            <ion-input type="number" formControlName="price"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label stacked>Editeur</ion-label>
+            <ion-input type="text" formControlName="editor"></ion-input>
+        </ion-item> 
+        <ion-item>
+            <ion-label stacked>Type de liste</ion-label>
+            <ion-select formControlName="listType">
+                <ion-option *ngFor="let t of typeListe" value="{{t}}">
+                  {{t}}</ion-option>
+            </ion-select>
+        </ion-item>
+        <ion-item>
+          <ion-label stacked>Categorie</ion-label>
+        </ion-item>
+          <ion-badge *ngFor="let cat of category; let i=index" 
+          class="badgeClass" 
+          [style.background-color]="cat.color"
+          [style.opacity]="cat.enable ? '0.2' : '1'"
+          (click)="onSelect(i)">
+            {{cat.libelle}}
+          </ion-badge>
+        
+   </form>
+</ion-content>
