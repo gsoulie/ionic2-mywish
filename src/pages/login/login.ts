@@ -16,7 +16,6 @@ export class LoginPage {
   loading: Loading;
 
   constructor(public navCtrl: NavController,
-              private authProvider: AuthProvider,
               public authData: AuthProvider,
               public formBuilder: FormBuilder,
               public alertCtrl: AlertController,
