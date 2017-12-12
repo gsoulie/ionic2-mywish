@@ -1,4 +1,7 @@
-# AngularFire2 authentication
+# Ionic 2 Wish list sample
 
-Based on [javebratt tutorial](https://javebratt.com/angularfire2-authentication-ionic/)    
-"# mywish" 
+## Features
+
+#### AngularFire2 Authentication
+#### AngularFire2 Real-time Database
+
