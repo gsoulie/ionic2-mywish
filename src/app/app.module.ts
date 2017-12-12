@@ -1,3 +1,4 @@
+import { Keyboard } from 'ionic-angular/platform/keyboard';
 import { FormPage } from './../pages/form/form';
 import { TabsPage } from './../pages/tabs/tabs';
 import { ListWishPage } from './../pages/list-wish/list-wish';
@@ -50,7 +51,7 @@ export const firebaseConfig = {
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp,{tabsHideOnSubPages:"true"}),
+    IonicModule.forRoot(MyApp,{tabsHideOnSubPages:"true", scrollAssist: false, autoFocusAssist: false}),
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFireAuthModule,
     AngularFireDatabaseModule	
@@ -77,7 +78,8 @@ export const firebaseConfig = {
     AuthProvider,
     DataProvider,
     Config,
-    ToolProvider
+    ToolProvider,
+    Keyboard
   ]
 })
 export class AppModule {}

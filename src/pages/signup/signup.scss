@@ -5,25 +5,32 @@ page-signup {
           margin-top: 20px;
         }
       }
-    
-      p {
-        font-size: 0.8em;
-        color: #d2d2d2;
-      }
-    
-      ion-label {
-        margin-left: 5px;
-      }
-    
-      ion-input {
-        padding: 5px;
-      }
-    
+            
       .invalid {
         border-bottom: 1px solid #FF6153;
       }
     
       .error-message .item-inner {
         border-bottom: 0 !important;
+      }
+  
+      ion-label {
+        margin-left: 5px;
+        color: #3f51b5;
+      }
+      .message{
+        font-size: 0.8em;
+        color:#3f51b5;
+        margin-left: 40px;
+        margin-right: 40px;
+      }
+    
+      ion-input {
+        color: map-get($colors, maintheme);
+        padding: 5px;
+      }
+    
+      ion-item{
+        background-color: transparent !important;
       }
 }

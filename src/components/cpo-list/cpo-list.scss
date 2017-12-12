@@ -8,4 +8,7 @@ cpo-list {
         padding-bottom: 0px;
         margin-bottom: 0px;
     }
+    ion-header ion-icon.back-button-icon.icon {
+        color: map-get($colors, white);
+    }
 }

@@ -2,11 +2,11 @@
   <ion-navbar color="maintheme">
     <ion-title>{{title}}</ion-title>
     <ion-buttons end>
-      <button ion-button icon-only color="white" (click)="onRefresh()">
+      <!--<button ion-button icon-only color="white" (click)="onRefresh()">
         <ion-icon name="refresh"></ion-icon>
-      </button>
-      <button ion-button icon-only color="white" (click)="onDisconnect()">
-          <ion-icon name="md-exit" color="white"></ion-icon>
+      </button>-->
+      <button ion-button icon-only (click)="onDisconnect()">
+          <ion-icon name="md-exit" [style.color]="'#ffffff'"></ion-icon>
         </button>
     </ion-buttons>
   </ion-navbar>
