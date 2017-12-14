@@ -25,12 +25,12 @@ import { CpoListComponent } from '../components/cpo-list/cpo-list';
 
 // AngularFire2 account settings
 export const firebaseConfig = {
-  apiKey: "AIzaSyA0ccxnMngkzDM5RQ2Uvv0G7hu5V0Q-RNM",
-  authDomain: "mywish-8c67c.firebaseapp.com",
-  databaseURL: "https://mywish-8c67c.firebaseio.com",
-  projectId: "mywish-8c67c",
-  storageBucket: "mywish-8c67c.appspot.com",
-  messagingSenderId: "934707222670"
+  apiKey: "YOUR-API-KEY",
+  authDomain: "YOUR-AUTH-DOMAIN",
+  databaseURL: "YOUR-URL",
+  projectId: "YOUR-PROJECT-ID",
+  storageBucket: "YOUR-STORAGE",
+  messagingSenderId: "YOUR-SENDER-ID"
 };
 
 @NgModule({
