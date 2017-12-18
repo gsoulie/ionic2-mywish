@@ -46,9 +46,10 @@
                   {{t}}</ion-option>
             </ion-select>
         </ion-item>
-        <ion-item>
+        <ion-item no-lines>
           <ion-label stacked>Categorie</ion-label>
         </ion-item>
+        <div class="categ">
           <ion-badge *ngFor="let cat of category; let i=index" 
           class="badgeClass" 
           [style.background-color]="cat.color"
@@ -56,6 +57,6 @@
           (click)="onSelect(i)">
             {{cat.libelle}}
           </ion-badge>
-        
+        </div>
    </form>
 </ion-content>
