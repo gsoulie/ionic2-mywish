@@ -7,13 +7,13 @@ export class Config{
   public static TAB_LUDO = 2;
   public static MODE_NEW = "New";
   public static MODE_EDIT = "Edit";
-  public static PLAYER = ['1 à 4', '1 à 5', '1 à 6+', '2', '2 à 4', '2 à 5', '2 à 6+', '3 à 4', '3 à 4+'];
+  public static PLAYER = ['1 à 4', '1 à 5', '1 à 6+', '2', '2 à 4', '2 à 5', '2 à 6+', '3 à 4', '3 à 4+', '4+'];
   public static DEFAULT_PLAYER = '2 à 4';
   public static LIST_WISH = "WISH";
   public static LIST_LUDO = "MA LUDOTHEQUE";
   public static LIST_A_VOIR = "A VOIR";
-  public static LIST_NON = "NON";
-  public static LIST_TYPE = ['WISH', 'MA LUDOTHEQUE', 'A VOIR', 'NON'];
+  public static LIST_VENDUS = "VENDUS";
+  public static LIST_TYPE = ['WISH', 'MA LUDOTHEQUE', 'A VOIR', 'VENDUS'];
   public static DEFAULT_LIST = 'WISH';
   public static category = [{guid: 1, libelle:"Gestion", color:"#3F54B1"},
   {guid: 2, libelle:"Ressources", color:"#D0340C"},
