@@ -8,6 +8,7 @@ import { FormPage } from '../../pages/form/form';
 import { DataProvider } from '../../providers/data/data';
 import { AlertController } from 'ionic-angular/components/alert/alert-controller';
 import { LoginPage } from '../../pages/login/login';
+import { TabsPage } from '../../pages/tabs/tabs';
 
 @Component({
   selector: 'cpo-list',
@@ -125,7 +126,8 @@ export class CpoListComponent implements OnInit{
    */
   onDisconnect(){
     this.authService.logoutUser().then(data => {
-      this.navCtrl.setRoot(LoginPage);
+      //this.navCtrl.setRoot(LoginPage);
+      this.navCtrl.popToRoot();
     });    
   }
 }

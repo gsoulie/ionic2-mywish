@@ -1,3 +1,4 @@
+import { AngularFireAuth } from 'angularfire2/auth';
 import { Injectable } from '@angular/core';
 import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
 import { Observable } from 'rxjs/Observable';
@@ -8,8 +9,10 @@ import { ToolProvider } from '../tool/tool';
 export class DataProvider {
   gamesList: AngularFireList<any>;
   games: Observable<any[]>;
-  
-  constructor(public afDB: AngularFireDatabase, private tool: ToolProvider) {
+  user;
+
+  constructor(public afDB: AngularFireDatabase, private tool: ToolProvider, private afAuth: AngularFireAuth) {
+    this.user = this.afAuth.auth.currentUser.uid;
   }
 
   fetchData(listType){
@@ -33,11 +36,17 @@ export class DataProvider {
       }
      */
 
-    // Querying data on listType
-    listType = listType || "WISH";
-    this.gamesList = this.afDB.list('/games', ref => ref.orderByChild('listType').equalTo(listType));
-    this.games = this.gamesList.valueChanges().map(items => items.sort(this.tool.predicateBy("title")));
-    return this.games;  
+    try{
+
+      // Querying data on listType
+      listType = listType || "WISH";
+      //this.gamesList = this.afDB.list('/games', ref => ref.orderByChild('listType').equalTo(listType));
+      this.gamesList = this.afDB.list('/games/'+this.user, ref => ref.orderByChild('listType').equalTo(listType));
+      this.games = this.gamesList.valueChanges().map(items => items.sort(this.tool.predicateBy("title")));
+      return this.games;  
+    } catch(err){
+      this.games = null;
+    }
   }
 
 
@@ -49,7 +58,12 @@ export class DataProvider {
           editor: string = "", 
           listType: string = "",
           category: any[] = []){
-    const newRef = this.gamesList.push({});
+            
+
+    
+    //const newRef = this.gamesList.push({});
+    const newRef = this.afDB.database.ref('/games/'+this.user).push({});
+    
     
     newRef.set({
       id: newRef.key,
@@ -61,7 +75,8 @@ export class DataProvider {
       editor: editor,
       listType: listType,
       category: category
-    });        
+    });    
+    
   }
 
   updateGame(id, title: string = "", 
