@@ -42,8 +42,8 @@ export class CpoListComponent implements OnInit{
       case Config.LIST_A_VOIR :
         this.title = "A voir";
         break;
-      case Config.LIST_NON :
-        this.title = "Non retenus";
+      case Config.LIST_VENDUS :
+        this.title = "Vendus";
         break;
       default:
         break;
@@ -66,15 +66,20 @@ export class CpoListComponent implements OnInit{
    */
   onRefresh(){
     const loading = this.loadingCtrl.create({content: 'Loading please wait...'});
-    loading.present();
-    this.games = this.dataService.fetchData(this.listType);
-    this.games.subscribe(res => {
-      this.gameCount = res.length;
+    try{
+      
+      loading.present();
+      this.games = this.dataService.fetchData(this.listType);
+      this.games.subscribe(res => {
+        this.gameCount = res.length;
+        loading.dismiss();
+      },
+      error => {
+        loading.dismiss();
+      });
+    } catch(err){
       loading.dismiss();
-    },
-    error => {
-      loading.dismiss();
-    });
+    }
   }
 
   /**
