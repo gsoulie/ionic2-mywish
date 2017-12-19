@@ -21,6 +21,8 @@ export class CpoListComponent implements OnInit{
   nbJeux: Observable<number>;
   gameCount: number = 0;
   title: string = "";
+  searchTerm: string = '';
+  tempList: Observable<any[]>;
 
   constructor(public navCtrl: NavController,
     public dataService: DataProvider, 
@@ -71,6 +73,7 @@ export class CpoListComponent implements OnInit{
       
       loading.present();
       this.games = this.dataService.fetchData(this.listType);
+      this.initializeGames();
       this.games.subscribe(res => {
         this.gameCount = res.length;
         loading.dismiss();
@@ -81,6 +84,35 @@ export class CpoListComponent implements OnInit{
     } catch(err){
       loading.dismiss();
     }
+  }
+
+  initializeGames(){
+    this.tempList = this.games;
+    
+  }
+
+  getItems(ev: any){
+    this.initializeGames();
+    
+
+    // set searchText to the value of the searchbar
+    var searchText = ev.target.value;
+    
+    // Avoid research if searchtext is empty
+    if (!searchText || searchText.trim() === '') {
+      return;
+    }
+
+    // Filtering on the attribute 'title'
+    this.games = this.games.filter((v) => {
+      v.forEach(element => {
+        if (element.title.toLowerCase().indexOf(this.searchTerm.toLowerCase()) > -1) {
+          console.log('add ' + element.title + ' --- ' + this.searchTerm);
+          return true;
+        }
+      });
+      return false;
+    })
   }
 
   /**
@@ -125,9 +157,28 @@ export class CpoListComponent implements OnInit{
    * User logout
    */
   onDisconnect(){
-    this.authService.logoutUser().then(data => {
-      //this.navCtrl.setRoot(LoginPage);
-      this.navCtrl.popToRoot();
-    });    
+    let alert = this.alertCtrl.create({
+      title: 'Disconnect ?',
+      message: 'Are you sure to disconnect from mywish ?',
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          handler: () => {
+            console.log('Cancel clicked');
+          }
+        },
+        {
+          text: 'Disconnect',
+          handler: () => {
+            this.authService.logoutUser().then(data => {
+              this.navCtrl.popToRoot();
+            }); 
+          }
+        }
+      ]
+    });
+    alert.present();
+      
   }
 }

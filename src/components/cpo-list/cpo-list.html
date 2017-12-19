@@ -10,6 +10,7 @@
         </button>
     </ion-buttons>
   </ion-navbar>
+  <!--<ion-searchbar class="searchbar" [(ngModel)]="searchTerm" (ionInput)="getItems($event)"></ion-searchbar>-->
 </ion-header>
 <ion-content class="window">
 <ion-fab right bottom>
@@ -60,3 +61,10 @@
     </ion-card>
   </div>
 </ion-content>
+<!--
+<ion-footer class="searchbar">
+    <ion-toolbar class="searchbar">
+        <ion-searchbar class="searchbar" (ionInput)="getItems($event)"></ion-searchbar>
+    </ion-toolbar>
+  </ion-footer>
+-->

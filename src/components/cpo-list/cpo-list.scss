@@ -11,4 +11,8 @@ cpo-list {
     ion-header ion-icon.back-button-icon.icon {
         color: map-get($colors, white);
     }
+    .searchbar{
+        background-color: map-get($colors , maintheme);
+        color: #ffffff; 
+    }
 }
