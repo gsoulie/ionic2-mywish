@@ -10,19 +10,20 @@
         </button>
     </ion-buttons>
   </ion-navbar>
-  <!--<ion-searchbar class="searchbar" [(ngModel)]="searchTerm" (ionInput)="getItems($event)"></ion-searchbar>-->
+ <ion-searchbar class="searchbar" [(ngModel)]="searchTerm" (ionInput)="getItems($event)"></ion-searchbar>
 </ion-header>
 <ion-content class="window">
-<ion-fab right bottom>
+  <ion-fab right bottom>
     <button ion-fab color="maintheme" (click)="onAddGame()">
       <ion-icon name="add" [style.color] = "'#ffffff'"></ion-icon>
     </button>
   </ion-fab>
   <ion-item class="itemTransparency" no-lines>
-    <ion-label class="lbl">{{gameCount}} jeu(x)</ion-label>
+    <ion-label class="countLabel">{{gameCount}} jeu(x)</ion-label>
   </ion-item>
-  <div *ngIf="games">
-    <ion-card *ngFor="let game of games | async ; let idx=index">
+  <div class="mainDiv" *ngIf="games">
+    <!--<ion-card *ngFor="let game of games | async ; let idx=index">-->
+        <ion-card *ngFor="let game of gamesArray ; let idx=index">
       <ion-card-header class="cardHeader" no-padding>
         <ion-item class="leftPadding" no-lines no-padding>
             <p class="title"><b>

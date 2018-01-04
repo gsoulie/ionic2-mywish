@@ -17,12 +17,13 @@ import { TabsPage } from '../../pages/tabs/tabs';
 export class CpoListComponent implements OnInit{
 
   @Input() listType: string = "";
+  gamesArray: any[] = []; // conversion of the Observable<any[]> to any[] in order to be able to filter the list with the searchbar
+  fullList: any[] = []; // backup of the initial complete list
   games: Observable<any[]>;
   nbJeux: Observable<number>;
   gameCount: number = 0;
   title: string = "";
   searchTerm: string = '';
-  tempList: Observable<any[]>;
 
   constructor(public navCtrl: NavController,
     public dataService: DataProvider, 
@@ -70,12 +71,13 @@ export class CpoListComponent implements OnInit{
   onRefresh(){
     const loading = this.loadingCtrl.create({content: 'Loading please wait...'});
     try{
-      
       loading.present();
       this.games = this.dataService.fetchData(this.listType);
       this.initializeGames();
       this.games.subscribe(res => {
         this.gameCount = res.length;
+        this.gamesArray = res as any[];
+        this.fullList = res as any[];
         loading.dismiss();
       },
       error => {
@@ -86,11 +88,12 @@ export class CpoListComponent implements OnInit{
     }
   }
 
+  // Reset the main list with the backup of the full dataset
   initializeGames(){
-    this.tempList = this.games;
-    
+    this.gamesArray = this.fullList;    
   }
 
+  // Filtering function for searchbar
   getItems(ev: any){
     this.initializeGames();
     
@@ -100,19 +103,19 @@ export class CpoListComponent implements OnInit{
     
     // Avoid research if searchtext is empty
     if (!searchText || searchText.trim() === '') {
+      this.gameCount = this.gamesArray.length;  // set the counter
       return;
     }
 
     // Filtering on the attribute 'title'
-    this.games = this.games.filter((v) => {
-      v.forEach(element => {
-        if (element.title.toLowerCase().indexOf(this.searchTerm.toLowerCase()) > -1) {
-          console.log('add ' + element.title + ' --- ' + this.searchTerm);
-          return true;
-        }
-      });
+    this.gamesArray = this.gamesArray.filter((v) => {
+      if (v.title.toLowerCase().indexOf(searchText.toLowerCase()) > -1) {
+        return true;
+      }
       return false;
-    })
+    });
+    this.gameCount = this.gamesArray.length;  // set the counter after filtering
+
   }
 
   /**

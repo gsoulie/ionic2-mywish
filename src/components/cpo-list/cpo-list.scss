@@ -15,4 +15,8 @@ cpo-list {
         background-color: map-get($colors , maintheme);
         color: #ffffff; 
     }
+    .wrap-text {
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
 }
