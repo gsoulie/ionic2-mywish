@@ -14,52 +14,10 @@
 // To declare rules for a specific mode, create a child rule
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
-.loginWindow{
-    background-color: #eeeeee;
-    color: #555555;//#3f51b5;
-    //height: 50px;
-}
-.menuButton{
-    background-color: #eeeeee;
-    color: #555555;
-    height: 55px;
-}
-.loginForm{
-    position: absolute;
-    bottom: 50px;
-    left: 50px;
-    right: 50px;
-}
-.window {
-    background-color: #eeeeee;
-}
-.lbl {
-    padding-left: 10px;
-    color: #999999;
-    font-size: 14px;
-}
-.cardHeader {
-    padding-top: 7px;
-    padding-left: 7px;
-    padding-bottom: 0px;
-    margin-bottom: 0px;
-}
-.separator {
-    margin-top: 10px;
-    height: 1px;
-    width: 100%;
-    background-color: #eeeeee;
-}
 .actionBtn {
     margin-top: 0;
     margin-right: 0px;
     width: 30px;    //new
-}
-.icon {
-    color: #999999;
-}
-.iconValue {
-    color: #999999;
 }
 .badgeClass {
     margin-left: 7px;
@@ -76,17 +34,49 @@
 .badge-3 {
     background-color: #b3b3b3;
 }
+.bottomContainer{
+    background-color:#ffffff;
+    width: 100%;
+    height: 60%;
+    left: 0px;
+    right: 0px;
+    top: 0px;
+    position: relative;
+}
+.cardHeader {
+    padding-top: 7px;
+    padding-left: 7px;
+    padding-bottom: 0px;
+    margin-bottom: 0px;
+}
 .col {
     margin-top: 0px;
     margin-right: 3px;
+}
+.countLabel {
+    padding-left: 10px;
+    color: #999999;
+    font-size: 12px;
+    margin-top: 0px;
+}
+.formContent{
+    margin-left: 40px;
+    margin-right: 40px;
+}
+.icon {
+    color: #999999;
+}
+.iconValue {
+    color: #999999;
 }
 .itemTransparency {
     background-color: transparent;
     padding: 0;
 }
-.title{
-    height: 100%;
-    //vertical-align: middle;   //new
+.lbl {
+    padding-left: 10px;
+    color: #999999;
+    font-size: 14px;
 }
 .leftPadding{
     padding-left: 5px;
@@ -94,8 +84,8 @@
 .linkButton{
     color: map-get($colors, maintheme);
     font-size: 0.8em;
-  }
-  .loginButton{
+}
+.loginButton{
     color: #ffffff;
     background-color: map-get($colors, maintheme);
     border-radius: 5px;
@@ -105,36 +95,19 @@
     left: 10px;
     right: 10px;
     display: block;
-  }
-  .signupButton{
-    color: map-get($colors, maintheme);
-    border-color: map-get($colors, maintheme);
-    border-radius: 5px;
-    width: 250px;
-    margin-left: auto;
-    margin-right: auto;
-    left: 10px;
-    right: 10px;
-    display: block;
-  }
-  .topContainer{
-    background-color: #ffffff;
-    width: 100%;
-    height: 40%;
-    left: 0px;
-    right: 0px;
-    position: relative;
-  }
-  .bottomContainer{
-    background-color:#ffffff;
-    width: 100%;
-    height: 60%;
-    left: 0px;
-    right: 0px;
-    top: 0px;
-    position: relative;
-  }
-  .logo{
+}
+.loginWindow{
+    background-color: #eeeeee;
+    color: #555555;//#3f51b5;
+    //height: 50px;
+}
+.loginForm{
+    position: absolute;
+    bottom: 50px;
+    left: 50px;
+    right: 50px;
+}
+.logo{
     width: 150px;
     height: 150px;
     position: absolute;
@@ -148,14 +121,49 @@
     margin-bottom: auto;
     display: block;
     z-index: 1;
-  }
-  .message{
+}
+.mainDiv{
+    margin-top: -20px;
+}
+.message{
     font-size: 0.8em;
     color:#3f51b5;
     margin-left: 40px;
     margin-right: 40px;
-  }
-  .formContent{
-    margin-left: 40px;
-    margin-right: 40px;
-  }
+}
+.menuButton{
+    background-color: #eeeeee;
+    color: #555555;
+    height: 55px;
+}
+.separator {
+    margin-top: 10px;
+    height: 1px;
+    width: 100%;
+    background-color: #eeeeee;
+}
+.signupButton{
+    color: map-get($colors, maintheme);
+    border-color: map-get($colors, maintheme);
+    border-radius: 5px;
+    width: 250px;
+    margin-left: auto;
+    margin-right: auto;
+    left: 10px;
+    right: 10px;
+    display: block;
+}
+.title{
+    height: 100%;
+}
+.topContainer{
+    background-color: #ffffff;
+    width: 100%;
+    height: 40%;
+    left: 0px;
+    right: 0px;
+    position: relative;
+}
+.window {
+    background-color: #eeeeee;
+}
